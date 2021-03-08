@@ -224,9 +224,12 @@
 !  Declare Arguments
       INTEGER, INTENT(in) :: status
 
+!  local variables
+      INTEGER             :: error
+
 !  Start of executable code
 #if defined (MPI_OPT)
-      CALL MPI_ABORT(MPI_COMM_WORLD, status, status)
+      CALL MPI_ABORT(MPI_COMM_WORLD, status, error)
 #else
       CALL EXIT(status)
 #endif
