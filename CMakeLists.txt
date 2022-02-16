@@ -13,7 +13,12 @@ target_link_libraries (bmw
                        stell
                        $<$<BOOL:OpenMP_Fortran_FOUND>:OpenMP::OpenMP_Fortran>
 )
+target_include_directories (bmw
 
+                            PUBLIC
+
+                            $<TARGET_PROPERTY:bmw,BINARY_DIR>
+)
 add_executable (xbmw)
 target_link_libraries (xbmw PUBLIC bmw)
 
