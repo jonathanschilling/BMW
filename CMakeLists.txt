@@ -6,11 +6,13 @@ find_package (OpenMP)
 
 add_library (bmw STATIC)
 
-target_link_libraries (bmw PUBLIC stell)
+target_link_libraries (bmw 
 
-if (OpenMP_Fortran_FOUND)
-    target_link_libraries (bmw PUBLIC OpenMP::OpenMP_Fortran)
-endif ()
+                       PUBLIC 
+
+                       stell
+                       $<$<BOOL:OpenMP_Fortran_FOUND>:OpenMP::OpenMP_Fortran>
+)
 
 add_executable (xbmw)
 target_link_libraries (xbmw PUBLIC bmw)
